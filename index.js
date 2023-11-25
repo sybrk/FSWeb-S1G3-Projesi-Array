@@ -215,16 +215,20 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 
 
 function rastgeleTatlar(dizi1, dizi2, dizi3, dizi4){
-  const diziler = [dizi1, dizi2, dizi3, dizi4];
   function rastgele(dizi) {
     let uzunluk = dizi.length;
     let random = Math.floor(Math.random()*uzunluk);
     return dizi[random];
   }
+  let merged = dizi1.concat(dizi2,dizi3,dizi4);
   let yeniDizi = [];
-  for (let i = 0; i < 25; i++) {
-    yeniDizi.push(rastgele(rastgele(diziler)));
+  while (yeniDizi.length < 25) {
+    const rastTat = rastgele(merged);
+    if (!yeniDizi.includes(rastTat)) {
+      yeniDizi.push(rastTat);
+    }
   }
+  
   return yeniDizi;
 }
 
